@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>🍵 Masala & Mug — Tea & Coffee House ☕✨</title>
+  <meta name="description" content="Masala & Mug — Handcrafted chai and specialty coffee in India. Fresh blends, snacks, and warm hospitality.">
+  <meta name="theme-color" content="#6b4226">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Tangerine&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#">Masala &amp; Mug</a>
+      <!-- Header cart button and settings -->
+      <div style="display:flex;align-items:center;gap:0.6rem">
+        <button id="headerCart" class="btn small header-cart" aria-label="Open cart" title="View cart (0 items)"> <span class="cart-icon">🛒</span> <span class="cart-label">Cart</span> <span id="headerCartCount" class="cart-badge">0</span></button>
+        <button id="navToggle" class="nav-toggle" aria-label="Open menu">☰</button>
+      </div>
+      <nav id="mainNav" class="main-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+      </div>
+    </section>
+
+    <section id="menu" class="section">
+      <div class="container">
+        <h2 class="section-title">Our Menu</h2>
+        <p class="section-sub">A wider selection of teas and coffees from across India — click or tap to explore.</p>
+
+        <!-- Snacks & Food: replaced printable/menu buttons with an inline snacks list -->
+        <div class="snacks-section" aria-label="Snacks and food">
+          <h3 class="group-title">Snacks &amp; Food</h3>
+          <div class="snack-list">
+            <div class="snack">
+              <div class="snack-info"><strong>Samosa (2 pcs)</strong><div class="muted">Crispy pastry with spicy potato filling</div></div>
+              <div class="snack-actions"><span class="price">₹40</span><button class="btn btn-outline small add-to-cart" data-name="Samosa (2 pcs)" data-price="40" data-image="assets/images/masala_chai.jpg">Add to Cart</button></div>
+            </div>
+            <div class="snack">
+              <div class="snack-info"><strong>Vada Pav</strong><div class="muted">Spiced potato fritter in a bun</div></div>
+              <div class="snack-actions"><span class="price">₹50</span><button class="btn btn-outline small add-to-cart" data-name="Vada Pav" data-price="50" data-image="assets/images/masala_chai.jpg">Add to Cart</button></div>
+            </div>
+            <div class="snack">
+              <div class="snack-info"><strong>Paneer Pakora</strong><div class="muted">Fried paneer in gram batter</div></div>
+              <div class="snack-actions"><span class="price">₹70</span><button class="btn btn-outline small add-to-cart" data-name="Paneer Pakora" data-price="70" data-image="assets/images/masala_chai.jpg">Add to Cart</button></div>
+            </div>
+            <div class="snack">
+              <div class="snack-info"><strong>Masala Sandwich</strong><div class="muted">Toasted sandwich with chutney and veggies</div></div>
+              <div class="snack-actions"><span class="price">₹80</span><button class="btn btn-outline small add-to-cart" data-name="Masala Sandwich" data-price="80" data-image="assets/images/masala_chai.jpg">Add to Cart</button></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-group">
+          <h3 class="group-title">Teas</h3>
+          <div class="cards">
+            <article class="card">
+              <span class="badge">Popular</span>
+              <img class="lightbox-img" src="assets/images/masala_chai.jpg" data-full="assets/images/masala_chai.jpg" alt="Masala Chai">
+              <div class="card-body">
+                <h3>Masala Chai</h3>
+                <p class="desc">Classic brewed chai with cinnamon, cardamom, ginger and fresh milk.</p>
+              </div>
+              <div class="card-footer">
+                <div class="price">₹60</div>
+                <button class="btn btn-outline small add-to-cart" data-name="Masala Chai" data-price="60" data-image="assets/images/masala_chai.jpg">Add to Cart</button>
+              </div>
+            </article>
+
+            <article class="card">
+              <img class="lightbox-img" src="assets/images/assam_tea.jpg" data-full="assets/images/assam_tea.jpg" alt="Assam Tea">
+              <div class="card-body">
+                <h3>Assam Tea</h3>
+                <p class="desc">Full-bodied, malty black tea from Assam — great with milk.</p>
+              </div>
+              <div class="card-footer">
+                <div class="price">₹65</div>
+                <button class="btn btn-outline small add-to-cart" data-name="Assam Tea" data-price="65" data-image="assets/images/assam_tea.jpg">Add to Cart</button>
+              </div>
+            </article>
+
+            <article class="card">
+              <img class="lightbox-img" src="assets/images/darjeeling_tea.jpg" data-full="assets/images/darjeeling_tea.jpg" alt="Darjeeling Tea">
+              <div class="card-body">
+                <h3>Darjeeling Tea</h3>
+                <p class="desc">Light, floral tea with a delicate aroma — best enjoyed plain or with a dash of honey.</p>
+              </div>
+              <div class="card-footer">
+                <div class="price">₹90</div>
+                <button class="btn btn-outline small add-to-cart" data-name="Darjeeling Tea" data-price="90" data-image="assets/images/darjeeling_tea.jpg">Add to Cart</button>
+              </div>
+            </article>
+
+            <article class="card">
+              <img class="lightbox-img" src="assets/images/nilgiri_tea.jpg" data-full="assets/images/nilgiri_tea.jpg" alt="Nilgiri Tea">
+              <div class="card-body">
+                <h3>Nilgiri Tea</h3>
+                <p class="desc">Fragrant and brisk tea from the Nilgiri hills — bright and refreshing.</p>
+              </div>
+              <div class="card-footer">
+                <div class="price">₹75</div>
+                <button class="btn btn-outline small add-to-cart" data-name="Nilgiri Tea" data-price="75" data-image="assets/images/nilgiri_tea.jpg">Add to Cart</button>
+              </div>
+            </article>
+
+            <article class="card">
+              <img class="lightbox-img" src="assets/images/green_tea.jpg" data-full="assets/images/green_tea.jpg" alt="Green Tea">
+              <div class="card-body">
+                <h3>Green Tea</h3>
+                <p class="desc">Light and vegetal — a healthy, caffeine-mild infusion.</p>
+              </div>
+              <div class="card-footer">
+                <div class="price">₹80</div>
+                <button class="btn btn-outline small add-to-cart" data-name="Green Tea" data-price="80" data-image="assets/images/green_tea.jpg">Add to Cart</button>
+              </div>
+            </article>
+
+            <article class="card">
+              <img class="lightbox-img" src="assets/images/kahwa.jpg" data-full="assets/images/kahwa.jpg" alt="Kashmiri Kahwa">
+              <div class="card-body">
+                <h3>Kashmiri Kahwa</h3>
+                <p class="desc">Saffron-kissed green tea brewed the Kashmiri way with almonds and cardamom.</p>
+              </div>
+              <div class="card-footer">
+                <div class="price">₹120</div>
+                <button class="btn btn-outline small add-to-cart" data-name="Kashmiri Kahwa" data-price="120" data-image="assets/images/kahwa.jpg">Add to Cart</button>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="menu-group">
+          <h3 class="group-title">Coffees</h3>
+          <div class="cards">
+            <article class="card">
+              <span class="badge">Classic</span>
+              <img class="lightbox-img" src="assets/images/filter_coffee.jpg" data-full="assets/images/filter_coffee.jpg" alt="Filter Coffee">
+              <div class="card-body">
+                <h3>Filter Coffee</h3>
+                <p class="desc">Traditional South Indian filter coffee — strong, frothy and aromatic.</p>
+              </div>
+              <div class="card-footer">
+                <div class="price">₹70</div>
+                <button class="btn btn-outline small add-to-cart" data-name="Filter Coffee" data-price="70" data-image="assets/images/filter_coffee.jpg">Add to Cart</button>
+              </div>
+            </article>
+
+            <article class="card">
+              <img class="lightbox-img" src="assets/images/arabica.jpg" data-full="assets/images/arabica.jpg" alt="Arabica">
+              <div class="card-body">
+                <h3>Arabica (House Blend)</h3>
+                <p class="desc">Smooth and aromatic medium-roast Arabica — our house espresso base.</p>
+              </div>
+              <div class="card-footer">
+                <div class="price">₹110</div>
+                <button class="btn btn-outline small add-to-cart" data-name="Arabica (House Blend)" data-price="110" data-image="assets/images/arabica.jpg">Add to Cart</button>
+              </div>
+            </article>
+
+            <article class="card">
+              <img class="lightbox-img" src="assets/images/robusta.jpg" data-full="assets/images/robusta.jpg" alt="Robusta">
+              <div class="card-body">
+                <h3>Robusta Strong</h3>
+                <p class="desc">Bold, full-bodied Robusta for a caffeine-forward cup.</p>
+              </div>
+              <div class="card-footer">
+                <div class="price">₹95</div>
+                <button class="btn btn-outline small add-to-cart" data-name="Robusta Strong" data-price="95" data-image="assets/images/robusta.jpg">Add to Cart</button>
+              </div>
+            </article>
+
+            <article class="card">
+              <img class="lightbox-img" src="assets/images/espresso.jpg" data-full="assets/images/espresso.jpg" alt="Espresso">
+              <div class="card-body">
+                <h3>Espresso</h3>
+                <p class="desc">Concentrated espresso shot — rich crema and intense flavour.</p>
+              </div>
+              <div class="card-footer">
+                <div class="price">₹120</div>
+                <button class="btn btn-outline small add-to-cart" data-name="Espresso" data-price="120" data-image="assets/images/espresso.jpg">Add to Cart</button>
+              </div>
+            </article>
+
+            <article class="card">
+              <img class="lightbox-img" src="assets/images/cappuccino.jpg" data-full="assets/images/cappuccino.jpg" alt="Cappuccino">
+              <div class="card-body">
+                <h3>Cappuccino</h3>
+                <p class="desc">Espresso with steamed milk and a touch of foam — classic café favourite.</p>
+              </div>
+              <div class="card-footer">
+                <div class="price">₹140</div>
+                <button class="btn btn-outline small add-to-cart" data-name="Cappuccino" data-price="140" data-image="assets/images/cappuccino.jpg">Add to Cart</button>
+              </div>
+            </article>
+
+            <article class="card">
+              <img class="lightbox-img" src="assets/images/iced_coffee.jpg" data-full="assets/images/iced_coffee.jpg" alt="Iced Coffee">
+              <div class="card-body">
+                <h3>Iced Cardamom Coffee</h3>
+                <p class="desc">Chilled espresso with cardamom and cold foam — refreshing and fragrant.</p>
+              </div>
+              <div class="card-footer">
+                <div class="price">₹120</div>
+                <button class="btn btn-outline small add-to-cart" data-name="Iced Cardamom Coffee" data-price="120" data-image="assets/images/iced_coffee.jpg">Add to Cart</button>
+              </div>
+            </article>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="about" class="section about">
+      <div class="container two-col">
+        <div>
+          <h2 class="section-title">About Masala &amp; Mug</h2>
+          <p>We blend age-old Indian recipes with modern brewing. Our tea leaves and coffee beans are sourced from small farms and roasted locally. Every cup is handcrafted to bring out authentic flavours.</p>
+          <ul>
+            <li>Locally sourced ingredients</li>
+            <li>Sustainable packaging</li>
+            <li>Cozy cafes across the city</li>
+          </ul>
+        </div>
+        <div class="about-image">
+          <img class="lightbox-img" src="assets/images/masala_chai.jpg" data-full="assets/images/masala_chai.jpg" alt="Tea stall in India">
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="section gallery">
+      <div class="container">
+        <h2 class="section-title">Gallery</h2>
+        <div class="grid">
+          <img class="lightbox-img" src="assets/images/masala_chai.jpg" data-full="assets/images/masala_chai.jpg" alt="Tea image">
+          <img class="lightbox-img" src="assets/images/filter_coffee.jpg" data-full="assets/images/filter_coffee.jpg" alt="Coffee image">
+          <img class="lightbox-img" src="assets/images/iced_coffee.jpg" data-full="assets/images/iced_coffee.jpg" alt="Kulhad chai">
+          <img class="lightbox-img" src="assets/images/cappuccino.jpg" data-full="assets/images/cappuccino.jpg" alt="Snacks">
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact">
+      <div class="container">
+        <h2 class="section-title">Contact &amp; Orders</h2>
+        <div class="two-col">
+          <div>
+            <p><strong>Visit us:</strong> 123 Tea Lane, Coffee City, India</p>
+            <p><strong>Call:</strong> +91 9xxxx xxxxx</p>
+            <p><strong>Email:</strong> <a href="mailto:hello@masalaandmug.in">hello@masalaandmug.in</a></p>
+            <p>Open: Mon–Sun 7:00 AM – 10:00 PM</p>
+            <p><a class="btn btn-primary" href="mailto:hello@masalaandmug.in?subject=Order%20Enquiry">Email an Order</a></p>
+          </div>
+
+          <form id="contactForm" class="contact-form" aria-label="Contact form">
+            <label>
+              Name
+              <input type="text" name="name" required placeholder="Your name">
+            </label>
+            <label>
+              Phone
+              <input type="tel" name="phone" required placeholder="+91">
+            </label>
+            <label>
+              Message
+              <textarea name="message" rows="4" placeholder="What would you like to order?" required></textarea>
+            </label>
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">Send</button>
+              <button type="reset" class="btn btn-outline">Reset</button>
+            </div>
+            <p class="muted">Note: This is a static demo. Use the email button to place real orders or connect your backend later.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Masala &amp; Mug 🍵</p>
+      <p class="social">📱 Follow us on <a href="#">Instagram</a> • <a href="#">Facebook</a></p>
+      <p class="version">🔖 Version: v0.0.1</p>
+    </div>
+  </footer>
+  <!-- focus-trap library (UMD) -->
+  <script src="https://unpkg.com/focus-trap@6.9.2/dist/focus-trap.umd.js"></script>
+  <script>
+    // expose createFocusTrap globally for our script
+    if(window.focusTrap){ window.createFocusTrap = window.focusTrap.createFocusTrap || window.createFocusTrap; }
+  </script>
+  <script src="assets/script.js"></script>
+  <!-- Mini cart panel (hidden until items added) -->
+  <div id="miniCart" class="mini-cart" aria-hidden="true">
+    <div class="mini-cart-header">
+      <button id="miniCartClose" class="mini-cart-close" aria-label="Close cart" title="Close cart">✕</button>
+      <h4>Your Cart</h4>
+      <div class="cart-summary">Items: <span id="cartCount">0</span> • Total: ₹<span id="cartTotal">0</span></div>
+    </div>
+    <div id="miniCartItems" class="mini-cart-items"></div>
+    <div class="mini-cart-actions">
+      <a id="viewCartBtn" class="btn btn-outline" href="cart.html">View Cart</a>
+      <button id="checkoutBtn" class="btn btn-primary">Checkout</button>
+    </div>
+  </div>
+
+  <!-- Floating cart removed per user request -->
+
+  <!-- Toast notifications -->
+  <div id="toast" class="toast" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Sticky cart button for mobile -->
+  <button id="stickyCartMobile" class="sticky-cart-mobile" aria-label="Open cart" title="Open cart">🛒<span id="stickyCartBadge" class="badge">0</span></button>
+</body>
+</html>

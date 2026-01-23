@@ -1,0 +1,82 @@
+/* Additional cart page styles */
+.order-summary-card {
+  margin-top: 1rem;
+  padding: 1rem;
+}
+
+.coupon-section {
+  margin-top: 0.8rem;
+}
+
+.coupon-input {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 0.4rem;
+}
+
+.coupon-input input {
+  flex: 1;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #e6e0db;
+}
+
+.checkout-actions {
+  margin-top: 0.8rem;
+  display: flex;
+  gap: 0.6rem;
+}
+
+.gift-option {
+  margin-top: 0.6rem;
+}
+
+.saved-section {
+  margin-top: 1rem;
+}
+
+.saved-list {
+  padding: 0.6rem;
+}
+
+.loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.error-msg {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 0.4rem;
+}
+
+.item-note {
+  margin-top: 0.4rem;
+}
+
+.item-note textarea {
+  width: 100%;
+  padding: 0.4rem;
+  border: 1px solid #e6e0db;
+  border-radius: 6px;
+  resize: vertical;
+}
+
+.shipping-calculator {
+  margin-top: 0.8rem;
+  padding: 0.6rem;
+  border: 1px solid #f0ece8;
+  border-radius: 8px;
+  background: #faf9f8;
+}
+
+.shipping-calculator select {
+  padding: 0.4rem;
+  border: 1px solid #e6e0db;
+  border-radius: 6px;
+}
+
+.shipping-cost {
+  margin-top: 0.4rem;
+  font-weight: 700;
+}

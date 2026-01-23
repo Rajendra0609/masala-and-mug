@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Cart — Masala & Mug</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">Masala &amp; Mug</a>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <h2 class="section-title">Your Cart</h2>
+      <div id="cartPage" class="cart-page two-col">
+        <div id="cartItems" class="cart-items"></div>
+
+        <aside id="cartSummary" class="card order-summary" style="margin-top:1rem;padding:1rem;">
+          <h3>Order Summary</h3>
+          <div>Items total: ₹<span id="pageSubtotal">0</span></div>
+          <div>Estimated tax: ₹<span id="pageTax">0</span></div>
+          <div style="margin-top:0.6rem;font-weight:700">Total: ₹<span id="pageTotal">0</span></div>
+
+          <div style="margin-top:0.8rem">
+            <label for="couponCode">Promo code</label>
+            <div style="display:flex;gap:0.6rem;margin-top:0.4rem"><input id="couponCode" placeholder="Enter coupon" style="flex:1;padding:0.5rem;border-radius:6px;border:1px solid #e6e0db"><button id="applyCoupon" class="btn btn-outline">Apply</button></div>
+            <div id="couponResult" class="muted" style="margin-top:0.4rem"></div>
+          </div>
+
+          <div style="margin-top:0.8rem;display:flex;gap:0.6rem">
+            <a class="btn btn-outline" href="index.html">Continue Shopping</a>
+            <button id="pageCheckout" class="btn btn-primary">Checkout</button>
+          </div>
+
+          <div style="margin-top:0.6rem"><label><input type="checkbox" id="giftCheckbox"> This order contains a gift</label></div>
+        </aside>
+      </div>
+
+      <section id="savedForLater" style="margin-top:1rem;display:none">
+        <h3>Saved for later</h3>
+        <div id="savedList" class="card" style="padding:0.6rem"></div>
+      </section>
+
+      <!-- Mobile sticky checkout bar -->
+      <div id="mobileStickyBar" class="mobile-sticky-bar" aria-hidden="true">
+        <div class="mobile-sticky-left">Items: <span id="mobileCount">0</span></div>
+        <div class="mobile-sticky-right">Total: ₹<span id="mobileTotal">0</span> <button id="mobileCheckoutBtn" class="btn btn-primary">Checkout</button></div>
+      </div>
+
+      <!-- Checkout modal / stepper -->
+      <div id="checkoutModal" class="modal" aria-hidden="true">
+        <div class="modal-inner">
+          <button id="closeCheckout" class="modal-close" aria-label="Close checkout">✕</button>
+          <div class="checkout-stepper">
+            <div class="checkout-illustration"><img src="assets/images/illustration-checkout.svg" alt="Checkout steps"></div>
+            <ol id="checkoutSteps" class="steps">
+              <li class="step">✅ Review</li>
+              <li class="step">💳 Payment</li>
+            </ol>
+            <div id="checkoutContent" class="checkout-content">Starting checkout...</div>
+            <!-- Removed Back and Next buttons -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- focus-trap library for accessible modal focus management -->
+  <script src="https://unpkg.com/focus-trap@6.9.2/dist/focus-trap.umd.js"></script>
+  <script>
+    if(window.focusTrap){ window.createFocusTrap = window.focusTrap.createFocusTrap || window.createFocusTrap; }
+  </script>
+  <script src="assets/script.js"></script>
+  <script>
+    // render cart page using exposed window.__masalaCart
+    document.addEventListener('DOMContentLoaded', function(){
+      function renderPage(){
+        const cart = (window.__masalaCart && window.__masalaCart.getCart()) || {items:[]};
+        const itemsEl = document.getElementById('cartItems'); itemsEl.innerHTML = '';
+        if(!cart.items.length){ itemsEl.innerHTML = '<div class="muted">Your cart is empty. Continue shopping to add items.</div>'; document.getElementById('pageSubtotal').textContent='0'; document.getElementById('pageTax').textContent='0'; document.getElementById('pageTotal').textContent='0'; return; }
+        cart.items.forEach(it=>{
+          const row = document.createElement('div');
+          row.className = 'cart-item';
+          row.style.padding = '0.6rem';
+          row.style.alignItems = 'center';
+          row.innerHTML = `
+            <div class="left" style="display:flex;gap:0.8rem;align-items:center;flex:1">
+              <img src="${it.image||'assets/images/masala_chai.jpg'}" alt="${it.name}" style="width:96px;height:72px;object-fit:cover;border-radius:6px">
+              <div class="details">
+                <h4 class="title" style="margin:0">${it.name}</h4>
+                <div class="variant">₹${it.price} each</div>
+              </div>
+            </div>
+            <div class="right" style="display:flex;flex-direction:column;align-items:flex-end;gap:0.6rem">
+              <div class="actions" style="display:flex;gap:0.5rem;align-items:center">
+                <button class="page-qty-minus" data-name="${it.name}">-</button>
+                <span class="page-qty">${it.qty}</span>
+                <button class="page-qty-plus" data-name="${it.name}">+</button>
+                <button class="page-remove" data-name="${it.name}">Remove</button>
+              </div>
+              <div class="price" style="font-weight:700">₹${(it.price * it.qty).toFixed(0)}</div>
+            </div>
+          `;
+          itemsEl.appendChild(row);
+        });
+
+        // summary
+        const subtotal = cart.items.reduce((s,i)=>s + i.price * i.qty,0);
+        const tax = Math.round(subtotal * 0.05);
+        const total = subtotal + tax;
+        document.getElementById('pageSubtotal').textContent = subtotal;
+        document.getElementById('pageTax').textContent = tax;
+        document.getElementById('pageTotal').textContent = total;
+
+  // wire buttons (qty and remove) inside the updated cart-item structure
+  itemsEl.querySelectorAll('.page-qty-plus').forEach(b=>b.addEventListener('click',()=>{ const name = b.dataset.name; const current = window.__masalaCart.getCart().items.find(i=>i.name===name); window.__masalaCart.updateQty(name, (current.qty||1) + 1); renderPage(); renderMiniCart(); }));
+  itemsEl.querySelectorAll('.page-qty-minus').forEach(b=>b.addEventListener('click',()=>{ const name = b.dataset.name; const current = window.__masalaCart.getCart().items.find(i=>i.name===name); window.__masalaCart.updateQty(name, (current.qty||1) - 1); renderPage(); renderMiniCart(); }));
+  itemsEl.querySelectorAll('.page-remove').forEach(b=>b.addEventListener('click',()=>{ window.__masalaCart.removeItem(b.dataset.name); renderPage(); renderMiniCart(); }));
+      }
+      renderPage();
+
+  // pageCheckout click is handled by the centralized checkout modal initializer (initCheckoutModal)
+
+      // coupon apply uses demo backend if running
+      const applyBtn = document.getElementById('applyCoupon');
+      if(applyBtn){
+        applyBtn.addEventListener('click', async ()=>{
+          const code = document.getElementById('couponCode').value.trim();
+          if(!code) return alert('Enter a coupon code');
+          const subtotal = (window.__masalaCart && window.__masalaCart.getCart()) ? window.__masalaCart.getCart().items.reduce((s,i)=>s + i.price * i.qty,0) : 0;
+          try{
+            const res = await fetch('/api/validate-coupon', { method: 'POST', headers:{'content-type':'application/json'}, body: JSON.stringify({ code, subtotal }) });
+            const j = await res.json();
+            const out = document.getElementById('couponResult');
+            if(j.ok){ out.textContent = `Applied ${j.coupon}: -₹${j.discount} (${j.description})`; }
+            else { out.textContent = j.message || 'Invalid coupon'; }
+            renderPage();
+          }catch(e){ alert('Coupon service unavailable'); }
+        });
+      }
+
+      // mobile sticky bar: scroll to the order summary instead of duplicating CTA
+      const mobileBtn = document.getElementById('mobileCheckoutBtn');
+      if(mobileBtn){
+        mobileBtn.addEventListener('click', ()=>{
+          const summary = document.getElementById('cartSummary');
+          if(summary){ summary.scrollIntoView({behavior:'smooth', block:'center'}); }
+        });
+      }
+
+      // saved for later: fetch saved list from demo server under key 'demo-user'
+      async function loadSaved(){
+        try{
+          const r = await fetch('/api/saved/demo-user');
+          const j = await r.json();
+          const el = document.getElementById('savedList');
+          const container = document.getElementById('savedForLater');
+          if(!el) return;
+          el.innerHTML = '';
+          if(j.saved && j.saved.length){
+            // show section when there are items
+            if(container) container.style.display = '';
+            j.saved.forEach(it=>{
+              const d = document.createElement('div'); d.style.display='flex'; d.style.justifyContent='space-between'; d.style.padding='0.4rem 0';
+              d.innerHTML = `<div>${it.name} • ₹${it.price}</div><div><button class="restore" data-name="${it.name}">Restore</button></div>`;
+              el.appendChild(d);
+            });
+            el.querySelectorAll('.restore').forEach(b=>b.addEventListener('click', ()=>{
+              const name = b.dataset.name;
+              const saved = j.saved.find(x=>x.name===name);
+              if(saved){ window.__masalaCart.addItem(saved); alert('Restored to cart (demo)'); loadSaved(); }
+            }));
+          } else {
+            // hide section when empty to avoid empty whitespace
+            if(container) container.style.display = 'none';
+          }
+        }catch(e){ console.warn(e); const container = document.getElementById('savedForLater'); if(container) container.style.display = 'none'; }
+      }
+      loadSaved();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+  <!-- Example resource definition for a datasource (commented out) -->
+  <!--
+  <Resource name="jdbc/masalaandmug" auth="Container"
+            type="javax.sql.DataSource"
+            maxTotal="20" maxIdle="10" maxWaitMillis="10000"
+            username="dbuser" password="dbpass" driverClassName="com.mysql.cj.jdbc.Driver"
+            url="jdbc:mysql://localhost:3306/masalaandmug"/>
+  -->
+
+  <!-- Recommended: disable antiResourceLocking if deploying from shared folders on Windows -->
+  <Manager pathname=""/>
+</Context>

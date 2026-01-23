@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="320" viewBox="0 0 480 320">
+  <rect rx="20" width="100%" height="100%" fill="#fffaf7"/>
+  <g transform="translate(60,40)" fill="#b55a2c">
+    <circle cx="100" cy="60" r="36" fill="#f6d6c1"/>
+    <rect x="64" y="110" width="120" height="12" rx="6" fill="#f1bfa6"/>
+    <rect x="32" y="140" width="200" height="12" rx="6" fill="#f1bfa6"/>
+  </g>
+  <text x="240" y="260" font-family="Poppins, Arial" font-size="18" fill="#6b6b6b" text-anchor="middle">Your cart is waiting — add some chai & coffee!</text>
+</svg>
